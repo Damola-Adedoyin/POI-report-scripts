@@ -4,8 +4,8 @@ WITH range_values AS (
         date_trunc('day', max(time_start)) as maxval
   FROM cdr
   WHERE 
-	EXTRACT ('year' FROM time_start)=2022 
-	AND EXTRACT('month' FROM time_start) = 12		--CHANGE MONTH HERE
+	EXTRACT ('year' FROM time_start)=2023
+	AND EXTRACT('month' FROM time_start) = 1		--CHANGE MONTH HERE
 	),   
 
 day_range AS (
@@ -18,8 +18,8 @@ callCount AS (
         count(*) as callCount, customer_id, vendor_id, pop_id, sum(duration) as duration
   FROM cdr
   WHERE 
-	EXTRACT ('year' FROM time_start)=2022 
-	AND EXTRACT('month' FROM time_start) = 12	   --CHANGE MONTH HERE
+	EXTRACT ('year' FROM time_start)=2023
+	AND EXTRACT('month' FROM time_start) = 1	   --CHANGE MONTH HERE
   AND (vendor_id = 1 or vendor_id = 2 or vendor_id = 3 or vendor_id = 26 or customer_id = 1 or customer_id = 2 or customer_id = 3 or customer_id = 26)
   and (extract(hour from time_start) < 22 and extract(hour from time_start) >= 19)
   GROUP BY 1,3,4,5
