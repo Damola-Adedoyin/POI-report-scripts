@@ -18,7 +18,7 @@ successCount AS (
         count(*) as successCount, customer_id, vendor_id, pop_id, sum(duration) as duration
   FROM cdr
   WHERE 
-	EXTRACT ('year' FROM time_start)=20223
+	EXTRACT ('year' FROM time_start)=2023
 	AND EXTRACT('month' FROM time_start) = 1 	  --CHANGE MONTH HERE
   AND (vendor_id = 1 or vendor_id = 2 or vendor_id = 3 or vendor_id = 26 or customer_id = 1 or customer_id = 2 or customer_id = 3 or customer_id = 26) 
   and success
