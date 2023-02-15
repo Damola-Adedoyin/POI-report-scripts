@@ -13,7 +13,7 @@ With orig_table_range as(
 select * from stats.active_call_orig_gateways_hourly 
 WHERE EXTRACT ('year' FROM calls_time) = 2023
 	AND EXTRACT('month' FROM calls_time) = 2
---	AND EXTRACT('day' FROM calls_time) = 18		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM calls_time)  BETWEEN 9 AND 14		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by calls_time 
 ),
@@ -22,7 +22,7 @@ term_table_range as(
 select * from stats.active_call_term_gateways_hourly  
 WHERE EXTRACT ('year' FROM calls_time) = 2023
 	AND EXTRACT('month' FROM calls_time) = 2
---	AND EXTRACT('day' FROM calls_time) = 18		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM calls_time) BETWEEN 9 AND 14		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by calls_time 
 ),
@@ -39,6 +39,7 @@ mtn_lag as(
 ),
 
 airtel_lag as(
+
 	select orig_table_range.calls_time :: date as orig_date, term_table_range.calls_time :: date as term_date,
 		max(orig_table_range.max_count) as airtel_lag_max_orig_count, max(term_table_range.max_count) as airtel_lag_max_term_count, 
 		ROUND(( max(orig_table_range.max_count) + max(term_table_range.max_count) ) * 100/ 10016 :: decimal, 2) as airtel_lag_util
