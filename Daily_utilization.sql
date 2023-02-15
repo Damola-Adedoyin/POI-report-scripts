@@ -3,7 +3,7 @@ With orig_table_range as(
 select * from stats.active_call_orig_gateways  
 WHERE EXTRACT ('year' FROM created_at) = 2023 
 	AND EXTRACT('month' FROM created_at) = 2
-	AND EXTRACT('day' FROM created_at) = 7		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM created_at) = 14		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by created_at 
 ),
@@ -11,7 +11,7 @@ term_table_range as(
 select * from stats.active_call_term_gateways  
 WHERE EXTRACT ('year' FROM created_at) = 2023 
 	AND EXTRACT('month' FROM created_at) = 2
-	AND EXTRACT('day' FROM created_at) = 7		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM created_at) = 14		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by created_at 
 ),
