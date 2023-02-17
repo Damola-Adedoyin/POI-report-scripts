@@ -13,7 +13,7 @@ With orig_table_range as(
 select * from stats.active_call_orig_gateways_hourly 
 WHERE EXTRACT ('year' FROM calls_time) = 2023
 	AND EXTRACT('month' FROM calls_time) = 2
-	AND EXTRACT('day' FROM calls_time)  BETWEEN 11 AND 13		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM calls_time)  BETWEEN 13 AND 15		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by calls_time 
 ),
@@ -22,7 +22,7 @@ term_table_range as(
 select * from stats.active_call_term_gateways_hourly  
 WHERE EXTRACT ('year' FROM calls_time) = 2023
 	AND EXTRACT('month' FROM calls_time) = 2
-	AND EXTRACT('day' FROM calls_time) BETWEEN 11 AND 13		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM calls_time) BETWEEN 13 AND 15		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by calls_time 
 ),
@@ -117,7 +117,7 @@ utilization_multi as (
 select * from stats.active_call_orig_gateways  
 WHERE EXTRACT ('year' FROM created_at) = 2023 
 	AND EXTRACT('month' FROM created_at) = 2
-	AND EXTRACT('day' FROM created_at) = 14		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM created_at) = 16		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by created_at 
 ),
@@ -125,7 +125,7 @@ term_table_range_ as(
 select * from stats.active_call_term_gateways  
 WHERE EXTRACT ('year' FROM created_at) = 2023 
 	AND EXTRACT('month' FROM created_at) = 2
-	AND EXTRACT('day' FROM created_at) = 14		--REMEMBER TO CHANGE DATE HERE
+	AND EXTRACT('day' FROM created_at) = 16		--REMEMBER TO CHANGE DATE HERE
 	AND gateway_id in (29,30, 35,36, 45,48, 47,46, 111,112, 114,115)
 order by created_at 
 ),
