@@ -45,7 +45,7 @@ WHERE customer_auth_id = 20087
 GLO_LAG AS (
 SELECT report_id, customer_id, customer_auth_id, agg_calls_count AS GLO_LAG_calls_count, (agg_asr_origination * 100) AS GLO_LAG_ASR_IN,  agg_calls_acd AS GLO_LAG_ACD
 FROM selected_customer
-WHERE customer_auth_id = 20132
+WHERE customer_auth_id = 20132 
 ),
 --MTN AND AIRTEL FOR ABUJA
 
