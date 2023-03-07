@@ -4,7 +4,7 @@ WITH range_values AS (
   FROM cdr
   WHERE 
 	EXTRACT ('year' FROM time_start)=2023
-	AND EXTRACT('month' FROM time_start) = 1			--<<< CHANGE MONTH
+	AND EXTRACT('month' FROM time_start) = 2			--<<< CHANGE MONTH
 ),
 
 day_range AS (
@@ -17,7 +17,7 @@ daily_all_calls AS (
   FROM cdr
   WHERE 
 	EXTRACT ('year' FROM time_start)=2023
-	AND EXTRACT('month' FROM time_start) = 1			--<<< CHANGE MONTH
+	AND EXTRACT('month' FROM time_start) = 2			--<<< CHANGE MONTH
   	AND (vendor_id in (1,2,3,26)  or customer_id in (1,2,3,26))
   	AND (pop_id in (4,5,7)  or customer_auth_id in (20092,20095,20087,20101,20102,20151,20141,20150,20142,20132))
   GROUP BY 1,2,3,4,5,6

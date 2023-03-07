@@ -9,7 +9,7 @@ FROM reports.cdr_custom_report AS rccr
 
 WHERE 
 	EXTRACT ('year' FROM date_start)=2023 
-	AND EXTRACT('month' FROM date_start) = 1  --CHANGE MONTH HERE										----------CHANGE MONTH
+	AND EXTRACT('month' FROM date_start) = 2  --CHANGE MONTH HERE										----------CHANGE MONTH
 	AND (created_at::date - date_start::date) <= 2
 ORDER BY EXTRACT('day' FROM date_start)
 ),
